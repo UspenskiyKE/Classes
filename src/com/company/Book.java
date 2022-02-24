@@ -9,42 +9,49 @@ public class Book {
     private int bookPublishingYear;
 
     public Book(String id, String bookCaption, Author bookAuthor, int bookPublishingYear) {
-        this.id=id;
-        this.bookCaption=bookCaption;
-        this.bookAuthor=bookAuthor;
-        this.bookPublishingYear=bookPublishingYear;
+        this.id = id;
+        this.bookCaption = bookCaption;
+        this.bookAuthor = bookAuthor;
+        this.bookPublishingYear = bookPublishingYear;
     }
 
-   public String getId() {
+    public String getId() {
         return id;
-   }
+    }
+
     public String getBookCaption() {
         return bookCaption;
     }
+
     public Author getBookAuthor() {
         return bookAuthor;
     }
+
     public int getBookPublishingYear() {
         return bookPublishingYear;
     }
+
     public void setBookPublishingYear(int bookPublishingYear) {
-        this.bookPublishingYear=bookPublishingYear;
+        this.bookPublishingYear = bookPublishingYear;
     }
+
     @Override
     public String toString() {
-        return bookAuthor.toString() + " \"" + bookCaption+"\". Год издания: "+bookPublishingYear;
+        return bookAuthor.toString() + " \"" + bookCaption + "\". Год издания: " + bookPublishingYear;
     }
+
     @Override
     public boolean equals(Object other) {
         if (this.getClass() != other.getClass()) {
             return false;
         }
         Book c2 = (Book) other;
-        return id.equals(c2.id);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+        return (id.equals(c2.id) && bookCaption == c2.bookCaption && bookAuthor.equals(c2.bookAuthor) && bookPublishingYear == c2.bookPublishingYear && this != null && c2 != null) || (this == c2 && this != null);
     }
 
- }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, bookAuthor, bookCaption, bookPublishingYear);
+    }
+
+}
